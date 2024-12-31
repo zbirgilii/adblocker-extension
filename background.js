@@ -76,9 +76,47 @@ chrome.declarativeNetRequest.updateDynamicRules({
         "urlFilter": "https://*.ttvnw.net/ad*", // Matches Twitch ad-related requests
         "resourceTypes": ["media", "image"]
       }
+    },
+    // Block ad requests on Peacock
+    {
+      "id": 9,
+      "priority": 1,
+      "action": { "type": "block" },
+      "condition": {
+        "urlFilter": "peacocktv.com/ad", // Matches Peacock ad endpoints
+        "resourceTypes": ["xmlhttprequest", "media"]
+      }
+    },
+    {
+      "id": 10,
+      "priority": 1,
+      "action": { "type": "block" },
+      "condition": {
+        "urlFilter": "ads.peacocktv.com", // Matches Peacock ad server
+        "resourceTypes": ["script", "image", "xmlhttprequest"]
+      }
+    },
+    // Block ad requests on Hulu
+    {
+      "id": 11,
+      "priority": 1,
+      "action": { "type": "block" },
+      "condition": {
+        "urlFilter": "hulu.com/ad", // Matches Hulu ad endpoints
+        "resourceTypes": ["xmlhttprequest", "media"]
+      }
+    },
+    {
+      "id": 12,
+      "priority": 1,
+      "action": { "type": "block" },
+      "condition": {
+        "urlFilter": "ads.hulu.com", // Matches Hulu ad server
+        "resourceTypes": ["script", "image", "xmlhttprequest"]
+      }
     }
   ],
-  removeRuleIds: [1, 2, 3, 4, 5, 6, 7, 8] // Removes old rules if they exist
+  removeRuleIds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] // Removes old rules if they exist
 }, () => {
-  console.log('Ad-blocking rules for YouTube, Spotify, HBO Max, Netflix, and Twitch updated.');
+  console.log('Ad-blocking rules updated for YouTube, Spotify, HBO Max, Netflix, Twitch, Peacock, and Hulu.');
 });
