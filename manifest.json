@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Simple Ad Blocker",
-  "version": "1.0",
-  "description": "Blocks ads on YouTube and Spotify",
+  "version": "1.1",
+  "description": "Blocks ads on YouTube, Spotify, HBO Max, Netflix, and Twitch",
   "permissions": [
     "webRequest",
     "webRequestBlocking",
@@ -11,11 +11,20 @@
   ],
   "host_permissions": [
     "https://*.youtube.com/*",
-    "https://*.spotify.com/*"
+    "https://*.spotify.com/*",
+    "https://*.hbomax.com/*",
+    "https://*.netflix.com/*",
+    "https://*.twitch.tv/*"
   ],
   "content_scripts": [
     {
-      "matches": ["https://*.youtube.com/*", "https://*.spotify.com/*"],
+      "matches": [
+        "https://*.youtube.com/*",
+        "https://*.spotify.com/*",
+        "https://*.hbomax.com/*",
+        "https://*.netflix.com/*",
+        "https://*.twitch.tv/*"
+      ],
       "js": ["content.js"]
     }
   ],
